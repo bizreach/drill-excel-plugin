@@ -21,7 +21,7 @@ Add a format setting to the storage configuration as:
   }
 ```
 
-Then you can query `*.xlsx` files on Apache Drill as:
+Then you can query `*.xlsx` files on Apache Drill.
 
 ```
 0: jdbc:drill:zk=local> SELECT id, name FROM dfs.`/tmp/emp.xlsx` where age > 35.0;

@@ -24,11 +24,11 @@ Add a format setting to the storage configuration as:
 Then you can query `*.xlsx` files on Apache Drill as:
 
 ```
-0: jdbc:drill:zk=local> SELECT * FROM dfs.`/tmp/emp.xlsx` where id = 'takezoe';
-+----------+----------------+-------+
-|    id    |      name      |  age  |
-+----------+----------------+-------+
-| takezoe  | Naoki Takezoe  | 37.0  |
-+----------+----------------+-------+
-1 row selected (1.895 seconds)
+0: jdbc:drill:zk=local> SELECT id, name FROM dfs.`/tmp/emp.xlsx` where age > 35.0;
++----------+----------------+
+|    id    |      name      |
++----------+----------------+
+| takezoe  | Naoki Takezoe  |
++----------+----------------+
+1 row selected (3.118 seconds)
 ```

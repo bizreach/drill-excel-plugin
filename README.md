@@ -32,3 +32,8 @@ Then you can query `*.xlsx` files on Apache Drill.
 +----------+----------------+
 1 row selected (3.118 seconds)
 ```
+
+Build from source
+----
+
+Run `mvn package`. `drill-excel-plugin-VERSION-jar-with-dependencies.jar` is generated into `target` directory.

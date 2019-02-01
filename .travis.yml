@@ -1,0 +1,18 @@
+sudo: required
+
+language: java
+
+jdk:
+  - oraclejdk11
+  - openjdk11
+
+services:
+  - docker
+
+before_install:
+  - mvn package -DskipTests=true
+  - docker build -t drill-test -f integration-tests/Dockerfile --build-arg java_version=11 --build-arg drill_version=1.15.0 .
+  - docker run -d -p 31010:31010 -t drill-test /bin/bash
+
+script:
+  - mvn test

@@ -36,4 +36,4 @@ Then you can query `*.xlsx` files on Apache Drill.
 Build from source
 ----
 
-Run `mvn package`. `drill-excel-plugin-VERSION-jar-with-dependencies.jar` is generated into `target` directory.
+Run `mvn package -DskipTests=true`. `drill-excel-plugin-VERSION-jar-with-dependencies.jar` is generated into `target` directory.

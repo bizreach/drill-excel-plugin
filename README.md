@@ -1,4 +1,4 @@
-drill-excel-plugin
+drill-excel-plugin [![Build Status](https://travis-ci.org/bizreach/drill-excel-plugin.svg?branch=master)](https://travis-ci.org/bizreach/drill-excel-plugin)
 ==================
 Apache Drill plugin for Excel files.
 

@@ -1,0 +1,21 @@
+sudo: required
+
+language: java
+
+jdk:
+  - oraclejdk11
+  - openjdk11
+
+env:
+  - java_version=11 drill_version=$(grep "<drill.version>" pom.xml | cut -d ">" -f 2 | cut -d "<" -f 1)
+
+services:
+  - docker
+
+before_install:
+  - mvn package -DskipTests=true
+  - docker build -t drill-test -f integration-tests/Dockerfile --build-arg java_version=${java_version} --build-arg drill_version=${drill_version} .
+  - docker run -d -p 31010:31010 -t drill-test /bin/bash
+
+script:
+  - mvn test

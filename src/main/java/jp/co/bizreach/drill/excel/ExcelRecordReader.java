@@ -56,6 +56,8 @@ public class ExcelRecordReader extends AbstractRecordReader {
 
         } catch(IOException e){
             logger.debug("Excel Plugin: " + e.getMessage());
+        } catch(InvalidFormatException e){
+            logger.debug("Excel Plugin: " + e.getMessage());
         }
     }
 
@@ -108,7 +110,7 @@ public class ExcelRecordReader extends AbstractRecordReader {
         List<String> values = new ArrayList<String>();
         for(int i = firstCellNum; i < lastCellNum; i++){
             Cell cell = row.getCell(i);
-            CellType cellType = cell.getCellType();
+            CellType cellType = cell.getCellTypeEnum();
             switch(cellType){
                 case BOOLEAN:
                     values.add(String.valueOf(cell.getBooleanCellValue()));

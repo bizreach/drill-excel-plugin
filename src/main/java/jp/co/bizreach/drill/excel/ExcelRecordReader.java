@@ -38,11 +38,11 @@ public class ExcelRecordReader extends AbstractRecordReader {
     private List<String> headers;
     private ExcelFormatPlugin.ExcelFormatConfig config;
 
-    public ExcelRecordReader(FragmentContext fragmentContext, String inputPath, DrillFileSystem fileSystem,
+    public ExcelRecordReader(FragmentContext fragmentContext, Path path, DrillFileSystem fileSystem,
                              List<SchemaPath> columns, ExcelFormatPlugin.ExcelFormatConfig config) throws OutOfMemoryException {
         try {
-            FSDataInputStream fsStream = fileSystem.open(new Path(inputPath));
-            this.inputPath = inputPath;
+            this.inputPath = path.toUri().getPath();
+            FSDataInputStream fsStream = fileSystem.open(path);
 
             this.wb = WorkbookFactory.create(fsStream);
             this.sheet = wb.getSheetAt(0);

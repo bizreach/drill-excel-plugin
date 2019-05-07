@@ -6,6 +6,7 @@ import org.apache.drill.common.expression.SchemaPath;
 import org.apache.drill.common.logical.FormatPluginConfig;
 import org.apache.drill.common.logical.StoragePluginConfig;
 import org.apache.drill.exec.ops.FragmentContext;
+import org.apache.drill.exec.planner.common.DrillStatsTable.TableStatistics;
 import org.apache.drill.exec.proto.UserBitShared;
 import org.apache.drill.exec.server.DrillbitContext;
 import org.apache.drill.exec.store.RecordReader;
@@ -15,6 +16,8 @@ import org.apache.drill.exec.store.dfs.easy.EasyFormatPlugin;
 import org.apache.drill.exec.store.dfs.easy.EasyWriter;
 import org.apache.drill.exec.store.dfs.easy.FileWork;
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -65,6 +68,21 @@ public class ExcelFormatPlugin extends EasyFormatPlugin<ExcelFormatPlugin.ExcelF
     @Override
     public RecordWriter getRecordWriter(FragmentContext context, EasyWriter writer) throws IOException {
         return null;
+    }
+
+    @Override
+    public boolean supportsStatistics() {
+        return false;
+    }
+
+    @Override
+    public TableStatistics readStatistics(FileSystem fs, Path statsTablePath) throws IOException {
+        throw new UnsupportedOperationException("unimplemented");
+    }
+
+    @Override
+    public void writeStatistics(TableStatistics statistics, FileSystem fs, Path statsTablePath) throws IOException {
+        throw new UnsupportedOperationException("unimplemented");
     }
 
     @JsonTypeName("excel")

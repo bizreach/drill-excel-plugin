@@ -6,7 +6,7 @@
 
     <groupId>jp.co.bizreach</groupId>
     <artifactId>drill-excel-plugin</artifactId>
-    <version>1.3.0</version>
+    <version>1.4.0-SNAPSHOT</version>
 
     <properties>
       <maven.compiler.source>1.8</maven.compiler.source>
